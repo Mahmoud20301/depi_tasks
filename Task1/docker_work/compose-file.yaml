@@ -5,11 +5,12 @@ services:
     depends_on:
       - mysql_db
     environment:
-      DB_HOST: mysql_db
-      DB_PORT: 3306
-      DB_NAME: sql_db
-      DB_USER: Mahmoud
-      DB_PASSWORD: Mahmoud12
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/sql_db
+      SPRING_DATASOURCE_USERNAME: Mahmoud
+      SPRING_DATASOURCE_PASSWORD: Mahmoud12
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQL8Dialect
     ports:
       - "8084:8080"
 
@@ -26,15 +27,16 @@ services:
       - mysql-volume:/var/lib/mysql
 
   app2:
-    build: .   
+    build: .
     depends_on:
       - postgres_db
     environment:
-      POSTGRES_HOST: postgres_db
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: pg_db
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: pgpass
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres_db:5432/pg_db
+      SPRING_DATASOURCE_USERNAME: pguser
+      SPRING_DATASOURCE_PASSWORD: pgpass
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: org.postgresql.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
     ports:
       - "8085:8080"
 

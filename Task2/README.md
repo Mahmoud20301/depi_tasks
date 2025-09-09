@@ -24,9 +24,3 @@ ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote 
 │   │       ├── docker-play.yaml    # Ansible playbook
 │   │       └── README.md           # Documentation
 │   │       ```
-│   ├── ## Inventory File
-│   │   └── ```ini
-│   │       [servers]
-│   │       vm1 ansible_host=REMOTE_IP ansible_user=USERNAME
-│   │       ```
-│   ├── ## Ansible Playbook

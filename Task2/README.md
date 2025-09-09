@@ -11,6 +11,12 @@ This project demonstrates how to **install Docker on a remote machine using Ansi
 ## Prerequisites
 - Local machine with Ansible installed  
 - Remote machine accessible via SSH  
-- User with `sudo` privileges on the remote machine  
+- User with `sudo` privileges on the remote machine
+## SSH Setup
+Before running Ansible, ensure you can connect to the remote machine via SSH:
+ssh-keygen -t rsa           # Generate a new SSH key pair on your local machine
+ssh-copy-id USER@REMOTE_IP  # Copy your public key to the remote machine's ~/.ssh/authorized_keys
+
+
 
 ## Project Structure

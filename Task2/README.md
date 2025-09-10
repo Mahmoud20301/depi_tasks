@@ -22,7 +22,7 @@ ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote 
 ```bash
 First i get ip from remote VM using ip a
 ```
-<img width="1920" height="1080" alt="Screenshot 2025-09-09 224244" src="https://github.com/user-attachments/assets/7720bc3e-b52c-4e59-9fca-d5a6456027c7" />
+<img width="1400" height="900" alt="Screenshot 2025-09-09 224244" src="https://github.com/user-attachments/assets/7720bc3e-b52c-4e59-9fca-d5a6456027c7" />
 
 
 [install-docker]

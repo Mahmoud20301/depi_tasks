@@ -16,5 +16,5 @@ This project demonstrates how to **install Docker on a remote machine using Ansi
 ```bash
 ssh-keygen -t rsa                          # Generate a new SSH key pair on your local machine
 ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote machine's ~/.ssh/authorized_keys
-
+```
 ## Inventory File

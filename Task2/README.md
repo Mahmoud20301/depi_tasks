@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="Screenshot 2025-09-09 224244" src="https://github.com/user-attachments/assets/38abd46c-ba32-474a-b03a-166a4628b668" />
+
 
 # Docker Setup with Ansible on Remote Machine
 
@@ -21,6 +21,9 @@ ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote 
 ## Inventory File
 ```bash
 First i get ip from remote VM using ip a
+```
+<img width="960" height="1080" alt="Screenshot 2025-09-09 211050" src="https://github.com/user-attachments/assets/602ed1e9-f3cd-401a-b49e-0ce51f1223e7" />
+
 <img width="1920" height="1080" alt="Screenshot 2025-09-09 224244" Task2/Screenshot 2025-09-09 224244.png" >
 
 [install-docker]

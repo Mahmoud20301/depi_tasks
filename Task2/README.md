@@ -1,3 +1,4 @@
+<img width="1920" height="1080" alt="Screenshot 2025-09-09 224244" src="https://github.com/user-attachments/assets/38abd46c-ba32-474a-b03a-166a4628b668" />
 
 # Docker Setup with Ansible on Remote Machine
 

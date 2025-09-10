@@ -40,4 +40,6 @@ ansible-playbook -i inventory.ini docker-play.yaml
 ```
 <img width="1920" height="1080" alt="Screenshot 2025-09-09 223346" src="https://github.com/user-attachments/assets/05a788b5-e9f9-4f90-a9db-e31e1275b811" />
 
+<img width="1920" height="1080" alt="Screenshot 2025-09-09 223256" src="https://github.com/user-attachments/assets/0cc3c2ae-812e-430f-8567-869c09860eeb" />
+
 

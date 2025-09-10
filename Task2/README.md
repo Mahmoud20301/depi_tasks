@@ -28,8 +28,9 @@ vm1 ansible_host=192.168.1.17 ansible_user=ansible  #Defines remote hosts for An
 ```
 
 ## Ansible Playbook
-```bash
-The playbook automates tasks on remote machines.  
-It ensures Docker is installed, the service is running, and Nginx is deployed, all in a repeatable, consistent way.
-```
+- Automates Docker installation on remote hosts  
+- Ensures Docker service is started and enabled  
+- Deploys Nginx container automatically  
+- Provides a repeatable and consistent setup for all servers
+
 

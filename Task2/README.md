@@ -32,5 +32,12 @@ vm1 ansible_host=192.168.1.17 ansible_user=ansible  #Defines remote hosts for An
 - Ensures Docker service is started and enabled  
 - Deploys Nginx container automatically  
 - Provides a repeatable and consistent setup for all servers
+## Running the Playbook
+Execute the playbook from your local machine with:
+
+```bash
+ansible-playbook -i inventory.ini docker-play.yaml
+```
+<img width="1920" height="1080" alt="Screenshot 2025-09-09 223346" src="https://github.com/user-attachments/assets/05a788b5-e9f9-4f90-a9db-e31e1275b811" />
 
 

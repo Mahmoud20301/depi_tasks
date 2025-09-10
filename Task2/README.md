@@ -23,8 +23,7 @@ ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote 
 First i get ip from remote VM using ip a
 ```
 <img width="1400" height="900" alt="Screenshot 2025-09-09 224244" src="https://github.com/user-attachments/assets/7720bc3e-b52c-4e59-9fca-d5a6456027c7" />
-
-
+```bash
 [install-docker]
 vm1 ansible_host=192.168.1.17 ansible_user=ansible  #Defines remote hosts for Ansible.
 ```

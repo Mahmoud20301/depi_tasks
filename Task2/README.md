@@ -43,7 +43,7 @@ ansible-playbook -i inventory.ini docker-play.yaml
 <img width="1920" height="1080" alt="Screenshot 2025-09-09 223256" src="https://github.com/user-attachments/assets/0cc3c2ae-812e-430f-8567-869c09860eeb" />
 
 ## Verification
-- Ensure Docker is installed and the Nginx container is running.
+Ensure Docker is installed and the Nginx container is running.
   
 <img width="1920" height="1080" alt="Screenshot 2025-09-09 223608" src="https://github.com/user-attachments/assets/e1ec06e4-af77-4a95-af2d-46ea6e066371" />
 

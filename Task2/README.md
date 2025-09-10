@@ -18,5 +18,7 @@ ssh-keygen -t rsa                          # Generate a new SSH key pair on your
 ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote machine's ~/.ssh/authorized_keys
 ```
 ## Inventory File
+``bash
 [install-docker]
 vm1 ansible_host=192.168.1.17 ansible_user=ansible
+```

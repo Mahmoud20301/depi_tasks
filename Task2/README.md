@@ -18,11 +18,9 @@ This project demonstrates how to **install Docker on a remote machine using Ansi
 ssh-keygen -t rsa                          # Generate a new SSH key pair on your local machine
 ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote machine's ~/.ssh/authorized_keys
 ```
-## Inventory File
-```bash
-First i get ip from remote VM using ip a
-```
+## Get IP of remote VM
 <img width="1400" height="900" alt="Screenshot 2025-09-09 224244" src="https://github.com/user-attachments/assets/7720bc3e-b52c-4e59-9fca-d5a6456027c7" />
+## Inventory File
 ```bash
 [install-docker]
 vm1 ansible_host=192.168.1.17 ansible_user=ansible  #Defines remote hosts for Ansible.

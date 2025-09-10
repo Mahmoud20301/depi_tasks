@@ -26,3 +26,10 @@ ssh-copy-id USER@REMOTE_IP                 # Copy your public key to the remote 
 [install-docker]
 vm1 ansible_host=192.168.1.17 ansible_user=ansible  #Defines remote hosts for Ansible.
 ```
+
+## Ansible Playbook
+```bash
+The playbook automates tasks on remote machines.  
+It ensures Docker is installed, the service is running, and Nginx is deployed, all in a repeatable, consistent way.
+```
+

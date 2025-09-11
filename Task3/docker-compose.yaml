@@ -1,0 +1,125 @@
+version: "3.9"
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  mysql-volume:
+  prometheus-data:
+  grafana-data:
+
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_DATABASE: sql_db
+      MYSQL_USER: Mahmoud
+      MYSQL_PASSWORD: Mahmoud12
+      MYSQL_ROOT_PASSWORD: rootpass
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    networks:
+      - monitoring
+
+  mysql_exporter:
+    image: prom/mysqld-exporter:latest
+    container_name: mysql_exporter
+    environment:
+      MYSQLD_EXPORTER_CONFIG_MY_CNF: /etc/.my.cnf
+    volumes:
+      - ./my.conf:/etc/.my.cnf:ro
+    command: ["--config.my-cnf=/etc/.my.cnf"]
+    depends_on:
+      - mysql_db
+    ports:
+      - "9104:9104"
+    restart: unless-stopped
+    networks:
+      - monitoring
+
+  sonarqube:
+    image: sonarqube:9.9-community
+    container_name: sonarqube
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+      SONAR_UPDATECENTER_ACTIVATE: "false"
+    ports:
+      - "9005:9000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/api/system/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+    networks:
+      - monitoring
+
+  app1:
+    build: .
+    image: my-spring-app
+    container_name: app1
+    depends_on:
+      - mysql_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_db:3306/sql_db
+      SPRING_DATASOURCE_USERNAME: Mahmoud
+      SPRING_DATASOURCE_PASSWORD: Mahmoud12
+      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQL8Dialect
+    ports:
+      - "8087:8080"
+    restart: always
+    networks:
+      - monitoring
+
+  sonar-cli:
+    image: sonarsource/sonar-scanner-cli:latest
+    container_name: sonar-cli
+    depends_on:
+      - sonarqube
+      - app1
+    volumes:
+      - ./:/usr/src
+    working_dir: /usr/src
+    entrypoint:
+      - sonar-scanner
+      - -Dsonar.projectKey=my-spring-app
+      - -Dsonar.sources=./src
+      - -Dsonar.java.binaries=./target
+      - -Dsonar.host.url=http://sonarqube:9000   # internal port
+      - -Dsonar.login=squ_b4e3b47263f81c553b8662f51d054fe6d3d4cce0
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "9090:9090"
+    depends_on:
+      - app1
+      - mysql_exporter
+    restart: always
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - monitoring

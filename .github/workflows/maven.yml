@@ -21,7 +21,7 @@ jobs:
         cache: maven
 
     - name: Build with Maven
-      run: mvn -B package
+      run:  mvn -B package --file Task5/spring-pet-app/pom.xml
 
 
     - name: Run tests

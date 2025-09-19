@@ -8,25 +8,28 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository
-    - uses: actions/checkout@v4
+      # Checkout the repository
+      - uses: actions/checkout@v4
 
-    # Set up JDK 17 and enable Maven caching
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: maven
+      # Set up JDK 17 and enable Maven caching
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
 
-    # Build the project (skip integration tests)
-    - name: Build with Maven (skip integration tests)
-      run: mvn -B package --file Task5/spring-pet-app/pom.xml -DskipITs
+      # Build the project and skip the Postgres integration tests
+      - name: Build with Maven (skip Postgres integration tests)
+        run: mvn -B package --file Task5/spring-pet-app/pom.xml -Dtest='!PostgresIntegrationTests'
 
-    # Optional: Uploads the full dependency graph to GitHub for Dependabot
-    - name: Update dependency graph
-      uses: advanced-security/maven-dependency-submission-action@v1
+      # Run all other unit tests
+      - name: Run unit tests only
+        run: mvn test --file Task5/spring-pet-app/pom.xml -Dtest='!PostgresIntegrationTests'
+
+      # Optional: Uploads the full dependency graph to GitHub for Dependabot
+      - name: Update dependency graph
+        uses: advanced-security/maven-dependency-submission-action@v1

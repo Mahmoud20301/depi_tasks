@@ -29,7 +29,3 @@ jobs:
       # Run all other unit tests
       - name: Run unit tests only
         run: mvn test --file Task5/spring-pet-app/pom.xml -Dtest='!PostgresIntegrationTests'
-
-      # Optional: Uploads the full dependency graph to GitHub for Dependabot
-      - name: Update dependency graph
-        uses: advanced-security/maven-dependency-submission-action@v1

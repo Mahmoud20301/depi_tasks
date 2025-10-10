@@ -1,0 +1,9 @@
+aws_region         = "us-east-1"
+vpc_cidr           = "172.16.0.0/16"
+public_subnet_cidr = "172.16.1.0/24"
+private_subnet_cidr = "172.16.2.0/24"
+availability_zone  = "us-east-1a"
+instance_type      = "t3.micro"
+instance_count     = 1
+ami_id             = "ami-0360c520857e3138f"
+key_name           = "spring-pet"

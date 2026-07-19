@@ -10,6 +10,7 @@ A complete **CI/CD pipeline** automating the software lifecycle from commit to d
 
 ![Uploading design (1).gif…]()
 
+
 Three stages:
 1. **Local Dev Workflow** — Developer → Working Dir → Staging → Commit
 2. **CI Stage** — GitHub → Jenkins → Build → SonarQube → Nexus → Docker → Docker Hub

@@ -137,7 +137,7 @@ Slack integration provides real-time notifications for:
 - Monitoring alerts
 
 
-(Add Slack screenshot)
+![Slack](slack.png)
 
 ---
 
@@ -179,10 +179,6 @@ Slack integration provides real-time notifications for:
 - Infrastructure as Code using Terraform
 - Security scanning using Trivy
 - GitOps workflow using ArgoCD
-
 ---
 
-# 👨‍💻 Author
-
-**DevOps Engineer**
-
+---

@@ -20,13 +20,7 @@ Three stages:
 ---
 
 ## 🔄 Pipeline Flow
-![Uploading pipeline.png…]()
----
-
-GitHub triggers the CI pipeline through webhooks.
-
-(Add GitHub screenshot)
-
+![Pipeline flow](pipeline.png)
 ---
 
 # ⚙️ Continuous Integration (CI)

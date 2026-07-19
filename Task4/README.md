@@ -2,53 +2,54 @@
 
 ## 📌 Overview
 
-This project demonstrates a complete **Continuous Integration and Continuous Deployment (CI/CD) pipeline** that automates the software development lifecycle from code commit to deployment and monitoring.
-
-The pipeline integrates modern DevOps tools to achieve:
-
-- Automated source code management
-- Continuous integration
-- Automated testing and code quality analysis
-- Container image creation
-- Artifact management
-- Automated deployment
-- Application monitoring and alerting
+A complete **CI/CD pipeline** automating the software lifecycle from commit to deployment and monitoring — covering SCM, CI, testing, code quality, containerization, artifact management, deployment, and observability.
 
 ---
 
-# 🏗️ Architecture Overview
+## 🏗️ Architecture
 
-The workflow consists of three main stages:
-
-1. **Developer Local Workflow**
-2. **Continuous Integration (CI) Stage**
-3. **Continuous Deployment (CD) & Monitoring Stage**
-
-<img width="800" height="558" alt="design" src="https://github.com/user-attachments/assets/8a51272c-b109-4fa1-8468-672710719940" />
+Three stages:
+1. **Local Dev Workflow** — Developer → Working Dir → Staging → Commit
+2. **CI Stage** — GitHub → Jenkins → Build → SonarQube → Nexus → Docker → Docker Hub
+3. **CD & Monitoring** — Docker Hub → Deployment Server → Prometheus/Grafana → Alert Manager → Slack
 
 ---
 
-# 🔄 Workflow Description
+## 🔄 Pipeline Flow
 
-## 1. Local Development Workflow
 
-Developers work on their local machines and follow the Git workflow.
 
-### Components:
+---
 
-### 👨‍💻 Developer
-- Writes and modifies application source code.
+## 🖼️ Figures
 
-### 💻 Working Directory
-- Contains the current development code.
+![Local Git Workflow](figures/local-git-workflow.png)
 
-### 📂 Staging Area
-- Files are prepared before committing.
+![GitHub](figures/github.png)
 
-### 🗄️ Database System
-- Local database environment used for development and testing.
+![Jenkins](figures/jenkins.png)
 
-### Git Commands:
+![Maven](figures/maven.png)
+
+![SonarQube](figures/sonarqube.png)
+
+![Nexus Repository](figures/nexus.png)
+
+![Docker Hub](figures/dockerhub.png)
+
+![Prometheus](figures/prometheus.png)
+
+![Grafana](figures/grafana.png)
+
+![Alert Manager](figures/alert-manager.png)
+
+![Slack](figures/slack.png)
+
+---
+
+## 💻 Code
+
+### Local Git Workflow
 
 ```bash
 git add .
@@ -56,252 +57,34 @@ git commit -m "Add new feature"
 git push origin main
 ```
 
-After pushing changes, the remote repository triggers the CI pipeline.
-
----
-
-# 2. Source Code Management (GitHub)
-
-## GitHub Repository
-
-GitHub acts as the central repository for source code management.
-
-Responsibilities:
-
-- Store application source code
-- Maintain version history
-- Manage branches
-- Trigger CI pipeline using Webhooks
-
-### Trigger:
-
-```
-Developer Push
-        |
-        ↓
-GitHub Webhook
-        |
-        ↓
-Jenkins Pipeline
-```
-
----
-
-# 3. Continuous Integration (CI) Stage
-
-## Jenkins
-
-Jenkins is responsible for automating the CI workflow.
-
-### Pipeline Steps:
-
-### 1. Source Code Checkout
-
-Jenkins pulls the latest code from GitHub.
-
-```
-GitHub Repository
-        |
-        ↓
-     Jenkins
-```
-
----
-
-## 2. Build Application
-
-Jenkins builds the application and prepares it for deployment.
-
-Tools:
-
-- Maven
-
-Example:
+### Build Application
 
 ```bash
 mvn clean package
 ```
 
----
-
-## 3. Code Quality Analysis
-
-### SonarQube
-
-SonarQube performs static code analysis.
-
-It checks:
-
-- Code quality
-- Bugs
-- Vulnerabilities
-- Code smells
-- Security issues
-
-Example:
-
-```
-Jenkins
-   |
-   ↓
-SonarQube Analysis
-```
-
----
-
-## 4. Dependency Management
-
-### Nexus Repository
-
-Nexus stores build artifacts and dependencies.
-
-Used for:
-
-- Maven packages
-- Docker images
-- Application artifacts
-
-Flow:
-
-```
-Jenkins
-   |
-   ↓
-Nexus Repository
-```
-
----
-
-# 4. Containerization Stage
-
-## Docker
-
-The application is packaged into a Docker container.
-
-Example:
+### Build & Push Docker Image
 
 ```bash
 docker build -t application:v1 .
-```
-
-Docker provides:
-
-- Consistent runtime environment
-- Easy deployment
-- Application isolation
-
----
-
-## Docker Hub
-
-Docker images are pushed to Docker Hub.
-
-Flow:
-
-```
-Jenkins
-   |
-   ↓
-Build Docker Image
-   |
-   ↓
-Push Image
-   |
-   ↓
-Docker Hub
-```
-
-Example:
-
-```bash
 docker push username/application:v1
 ```
 
----
+### Jenkinsfile
 
-# 5. Continuous Deployment (CD) Stage
-
-After the image is available in Docker Hub, deployment starts automatically.
-
-Deployment flow:
-
-```
-Docker Hub
-     |
-     ↓
-Deployment Server
-     |
-     ↓
-Running Application
+```groovy
+// Add your Jenkinsfile pipeline stages here
 ```
 
-Docker containers are deployed into the target environment.
+### Dockerfile
 
----
-
-# 6. Monitoring & Observability
-
-The deployed application is monitored using:
-
-## Prometheus
-
-Prometheus collects metrics from the application and infrastructure.
-
-Examples:
-
-- CPU usage
-- Memory usage
-- Request rate
-- Application health
-
----
-
-## Grafana
-
-Grafana provides visualization dashboards.
-
-Used for:
-
-- Monitoring system performance
-- Creating dashboards
-- Analyzing metrics
-
----
-
-## Alert Manager
-
-Alert Manager handles notifications.
-
-It sends alerts when problems occur.
-
-Example:
-
-```
-High CPU Usage
-       |
-       ↓
-Prometheus
-       |
-       ↓
-Alert Manager
-       |
-       ↓
-Slack Notification
+```dockerfile
+# Add your Dockerfile here
 ```
 
 ---
 
-## Slack Integration
-
-Slack receives real-time notifications about:
-
-- Deployment status
-- Application failures
-- Monitoring alerts
-
----
-
-# 🛠️ Technologies Used
+## 🛠️ Technologies
 
 | Category | Tools |
 |----------|-------|
@@ -309,86 +92,23 @@ Slack receives real-time notifications about:
 | CI/CD Automation | Jenkins |
 | Build Tool | Maven |
 | Code Quality | SonarQube |
-| Artifact Repository | Nexus Repository |
-| Containerization | Docker |
-| Container Registry | Docker Hub |
-| Monitoring | Prometheus |
-| Visualization | Grafana |
-| Alerting | Alert Manager |
-| Notifications | Slack |
+| Artifact Repository | Nexus |
+| Containerization | Docker, Docker Hub |
+| Monitoring | Prometheus, Grafana |
+| Alerting | Alert Manager → Slack |
 
 ---
 
-# 🔐 CI/CD Pipeline Flow
+## 📌 Future Improvements
 
-```
-Developer
-    |
-    ↓
-Git Commit
-    |
-    ↓
-GitHub Repository
-    |
-    ↓
-Webhook Trigger
-    |
-    ↓
-Jenkins Pipeline
-    |
-    ↓
-Build & Test
-    |
-    ↓
-SonarQube Analysis
-    |
-    ↓
-Upload Artifact
-    |
-    ↓
-Build Docker Image
-    |
-    ↓
-Push Image to Docker Hub
-    |
-    ↓
-Deploy Application
-    |
-    ↓
-Monitor Using Prometheus & Grafana
-    |
-    ↓
-Send Alerts Through Slack
-```
+- Kubernetes deployment
+- Infrastructure as Code using Terraform
+- Security scanning with Trivy
+- Automated testing stages
+- GitOps workflow using ArgoCD
 
 ---
 
-# ✅ Benefits
-
-- Fully automated software delivery
-- Faster release cycles
-- Improved code quality
-- Early bug detection
-- Consistent deployments
-- Better system visibility
-- Reduced manual operations
-
----
-
-# 📌 Future Improvements
-
-Possible enhancements:
-
-- Add Kubernetes deployment
-- Implement Infrastructure as Code using Terraform
-- Add security scanning using Trivy
-- Add automated testing stages
-- Implement GitOps workflow using ArgoCD
-
----
-
-# 👨‍💻 Author
+## 👨‍💻 Author
 
 **DevOps Engineer**
-
-<img width="800" height="558" alt="design" src="https://github.com/user-attachments/assets/8a51272c-b109-4fa1-8468-672710719940" />

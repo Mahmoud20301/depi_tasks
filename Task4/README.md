@@ -103,13 +103,6 @@ Docker images are stored and managed using Docker Hub.
 
 The deployment stage automatically pulls the Docker image from Docker hub and deploys the application to the target environment.
 
-## Docker Hub
-
-Docker images are stored and managed using Docker Hub.
-
-
-
-
 
 
 ![Deployment](spring-pet-app.png)
@@ -122,7 +115,7 @@ Docker images are stored and managed using Docker Hub.
 
 Prometheus collects application and infrastructure metrics.
 
-(Add Prometheus screenshot)
+![Prometheus](prometheus.png)
 
 
 ## Grafana

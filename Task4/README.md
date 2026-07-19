@@ -46,8 +46,6 @@ Tools used:
 - Nexus Repository
 
 
-(Add Jenkins pipeline screenshot)
-
 ---
 
 # 🔍 Code Quality Analysis
@@ -61,7 +59,7 @@ SonarQube performs static code analysis to identify:
 - Code quality issues
 
 
-(Add SonarQube screenshot)
+![Sonarqube](sonarqube.png)
 
 ---
 
@@ -76,7 +74,7 @@ Nexus is used to store and manage:
 - Build packages
 
 
-(Add Nexus screenshot)
+![Nexus](nexus.png)
 
 ---
 
@@ -96,7 +94,7 @@ The application is containerized using Docker to provide:
 Docker images are stored and managed using Docker Hub.
 
 
-(Add Docker/Docker Hub screenshot)
+
 
 ---
 

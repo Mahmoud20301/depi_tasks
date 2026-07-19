@@ -8,7 +8,7 @@ A complete **CI/CD pipeline** automating the software lifecycle from commit to d
 
 ## 🏗️ Architecture
 
-![Uploading design.gif…]()
+![CI/CD Architecture](design.gif)
 
 
 

@@ -122,14 +122,10 @@ Prometheus collects application and infrastructure metrics.
 
 Grafana visualizes metrics through monitoring dashboards.
 
-(Add Grafana dashboard screenshot)
-
-
 ## Alert Manager
 
 Alert Manager handles system alerts and notifications.
-
-(Add Alert Manager screenshot)
+![Grafana](grafana.png)
 
 
 ## Slack Notifications

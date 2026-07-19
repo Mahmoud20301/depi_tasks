@@ -19,8 +19,7 @@ Three stages:
 ---
 
 ## 🔄 Pipeline Flow
-
-
+![Uploading pipeline.png…]()
 
 ---
 

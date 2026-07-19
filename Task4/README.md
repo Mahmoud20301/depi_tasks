@@ -179,6 +179,5 @@ Slack integration provides real-time notifications for:
 - Infrastructure as Code using Terraform
 - Security scanning using Trivy
 - GitOps workflow using ArgoCD
----
 
----
+

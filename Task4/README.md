@@ -93,6 +93,7 @@ The application is containerized using Docker to provide:
 
 Docker images are stored and managed using Docker Hub.
 
+![Docker Hub](dockerhub.png)
 
 
 
@@ -100,14 +101,18 @@ Docker images are stored and managed using Docker Hub.
 
 # 🚀 Continuous Deployment (CD)
 
-The deployment stage automatically pulls the Docker image and deploys the application to the target environment.
+The deployment stage automatically pulls the Docker image from Docker hub and deploys the application to the target environment.
 
-Workflow:
+## Docker Hub
+
+Docker images are stored and managed using Docker Hub.
 
 
 
 
-(Add Deployment screenshot)
+
+
+![Deployment](spring-pet-app.png)
 
 ---
 
